@@ -20,22 +20,36 @@ public class Lista extends ExcecaoDivisaoResultadoZero{
     }
 
     public void setArrayANaPosicao(int x, int p){   
-        this.a[p] = x;
+        if (p <10){
+            this.a[p] = x;
+        }else{
+            System.out.println("Posição ultrapassa tamanho definido");
+        }
     }
 
     public void setArrayBNaPosicao(int x, int p){
-        this.b[p] = x;
+        if (p <10){
+            this.b[p] = x;
+        }else{
+            System.out.println("Posição ultrapassa tamanho definido");
+        }
     }
 
     public void Calcula(int a, int b) throws ExcecaoDivisaoResultadoZero{
-        
-        int i = a/b;
-        if(i >= 1 ){
-            System.out.println(i);
-        }else{
-            throw new ExcecaoDivisaoResultadoZero();
-        }    
+        try{
+            int i = a/b;
+            if(i >= 1 ){
+                System.out.println(i);
+            }else{
+                throw new ExcecaoDivisaoResultadoZero();
+            }
+        }catch(ArithmeticException e){
+            System.out.println("Não é possivel dividir por zero!");
+        }catch(ExcecaoDivisaoResultadoZero e){
+            System.out.println("Valor igual a zero!");
+        }
     }
+
 
     public void CalculaDivisaoArray() throws ExcecaoDivisaoResultadoZero{
         int s = 0;
